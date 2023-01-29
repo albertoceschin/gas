@@ -1,0 +1,17 @@
+if [ $(hostname) == "kw60896" ] ||  [ $(hostname) == "dell" ] 
+then
+    alias gas='cd ~/OpenFOAM/gas'
+    alias gassol='cd ~/OpenFOAM/gas/solver'
+    alias gassrc='cd ~/OpenFOAM/gas/src'
+    alias gasrun='cd ~/OpenFOAM/gas/run'
+    alias gasutil='cd ~/OpenFOAM/gas/utility'
+fi
+
+if [[ $(hostname -d) == "hpc.kaust.edu.sa" ]]
+then
+    alias gas='cd /project/k1459/ceschia/OpenFOAM/gas'
+    alias gasrun='cd /project/k1459/ceschia/OpenFOAM/gas/src/run'
+    alias gassol='cd /project/k1459/ceschia/OpenFOAM/gas/solver'
+    alias gassrc='cd /project/k1459/ceschia/OpenFOAM/gas/src'
+    alias gasutil='cd /project/k1459/ceschia/OpenFOAM/gas/utility'
+fi
