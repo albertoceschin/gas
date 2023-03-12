@@ -1,0 +1,236 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2206                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+
+
+halfAngle 	45.0;
+quadAngle 	22.5;
+rad2            #calc "degToRad($halfAngle)";
+rad4            #calc "degToRad($quadAngle)";
+
+scale 1;
+
+//GEOMETRY POINTS
+diam	  0.01;
+
+Length_diam 16;
+Rint_diam 2;
+Rext_diam 10;
+
+L	#calc	"$Length_diam*$diam";
+R	#calc	"0.5*$diam";
+Rhalf	#calc	"0.5*$R";
+Rint  	#calc	"$Rint_diam*$R+$R";
+Rext	#calc	"$Rext_diam*$R+$Rint";
+
+y1	#calc	"0.5*$R*cos($rad2)";
+z1	#calc	"0.5*$R*sin($rad2)";
+y2	#calc	"$R*cos($rad2)";
+z2	#calc	"$R*sin($rad2)";
+y3	#calc	"$Rint*cos($rad2)";
+z3	#calc	"$Rint*sin($rad2)";
+y4	#calc	"$Rext*cos($rad2)";
+z4	#calc	"$Rext*sin($rad2)";
+
+//INTERPOLATION POINTS
+y26	#calc	"$R*cos($rad4)";
+z26	#calc	"$R*sin($rad4)";
+y64	#calc	"$R*cos($rad4+$rad2)";
+z64	#calc	"$R*sin($rad4+$rad2)";
+
+y1416	#calc	"$Rint*cos($rad4)";
+z1416	#calc	"$Rint*sin($rad4)";
+y1618	#calc	"$Rint*cos($rad4+$rad2)";
+z1618	#calc	"$Rint*sin($rad4+$rad2)";
+
+y1517	#calc	"$Rext*cos($rad4)";
+z1517	#calc	"$Rext*sin($rad4)";
+y1719	#calc	"$Rext*cos($rad4+$rad2)";
+z1719	#calc	"$Rext*sin($rad4+$rad2)";
+
+
+
+//MESH POINTS
+
+Half_Pipe 	2;
+//Internal_Inflow 	#calc "2*$Rint_diam*$Half_Pipe";
+//External_Inflow		#calc "$Rext_diam*$Half_Pipe/2";
+Internal_Inflow      8; 
+External_Inflow      20;
+
+LP 		20;
+
+
+vertices
+(
+    (0.0	0.0		0.0)    //0
+    (0.0	$Rhalf		0.0)	//1
+    (0.0	$R		0.0)	//2
+    (0.0	0.0		$Rhalf)	//3
+    (0.0	0.0		$R)		//4
+    (0.0	$y1		$z1)	//5
+    (0.0	$y2		$z2)	//6
+    ($L		0.0		0.0)    //7
+    ($L		$Rhalf		0.0)	//8
+    ($L		$R		0.0)	//9
+    ($L		0.0		$Rhalf)	//10
+    ($L		0.0		$R)		//11
+    ($L		$y1		$z1)	//12
+    ($L		$y2		$z2)	//13
+    (0.0	$Rint		0.0)	//14
+    (0.0	$Rext		0.0)	//15
+    (0.0	$y3		$z3)	//16
+    (0.0	$y4		$z4)	//17
+    (0.0	0.0		$Rint)	//18
+    (0.0	0.0		$Rext)	//19
+    ($L		$Rint		0.0)	//20
+    ($L		$Rext		0.0)	//21
+    ($L 	$y3		$z3)	//22
+    ($L 	$y4		$z4)	//23
+    ($L 	0.0		$Rint)	//24
+    ($L 	0.0		$Rext)	//25
+    
+    
+    
+);
+
+
+blocks
+(
+//    hex (0  1  5  3  7  8  12 10 )   (1 1 1  ) simpleGrading  ( 1   1 1)  //A0
+//    hex (1  2  6  5  8  9  13 12 )   (1 1 1  ) simpleGrading  (1  0.1 1)  //B0
+//    hex (3  5  6  4  10 12 13 11)   (1 1 1 ) simpleGrading  ( 0.1  1 1)  //C0
+
+//    hex (0  1  5  3  7  8  12 10 )   		($Half_Pipe $Half_Pipe $LP  ) 		simpleGrading  (1  1  20)  //A0
+//    hex (1  2  6  5  8  9  13 12 )   		($Half_Pipe $Half_Pipe $LP  ) 		simpleGrading  (1  1  20)  //B0
+//    hex (3  5  6  4  10 12 13 11)    		($Half_Pipe $Half_Pipe $LP ) 		simpleGrading  (1  1  20)  //C0
+//    hex (2  14  16  6  9  20  22 13 )   	($Internal_Inflow $Half_Pipe $LP  ) 	simpleGrading  (18  1 20)  //B0
+//    hex (4  6  16  18  11 13 22 24)    		($Half_Pipe $Internal_Inflow $LP ) 	simpleGrading  (1  18  20)  //C0
+//    hex (14  15  17  16  20  21  23 22 )   	($External_Inflow $Half_Pipe $LP  )	simpleGrading  (2.5  1  20)  //B0
+//    hex (18  16  17  19  24 22 23 25)    	($Half_Pipe $External_Inflow $LP ) 	simpleGrading  (1  2.5  20)  //C0
+
+
+hex (0  1  5  3  7  8  12 10 )   		($Half_Pipe $Half_Pipe $LP  ) 		simpleGrading  (1  1  1)  //A0
+hex (1  2  6  5  8  9  13 12 )   		($Half_Pipe $Half_Pipe $LP  ) 		simpleGrading  (1  1  1)  //B0
+hex (3  5  6  4  10 12 13 11)    		($Half_Pipe $Half_Pipe $LP ) 		simpleGrading  (1  1  1)  //C0
+hex (2  14  16  6  9  20  22 13 )   	($Internal_Inflow $Half_Pipe $LP  ) 	simpleGrading  (1  1 1)  //B0
+hex (4  6  16  18  11 13 22 24)    		($Half_Pipe $Internal_Inflow $LP ) 	simpleGrading  (1  1  1)  //C0
+hex (14  15  17  16  20  21  23 22 )   	($External_Inflow $Half_Pipe $LP  )	simpleGrading  (1  1  1)  //B0
+hex (18  16  17  19  24 22 23 25)    	($Half_Pipe $External_Inflow $LP ) 	simpleGrading  (1  1  1)  //C0
+);
+
+edges
+(
+    arc 6  2  (0  $y26 $z26)
+    arc 4  6  (0  $y64 $z64)
+    arc 13 9 ($L $y26 $z26)
+    arc 11 13 ($L $y64 $z64)
+    
+    arc 14  16  (0  $y1416 $z1416)
+    arc 16  18  (0  $y1618 $z1618)
+    arc 20 22 ($L $y1416 $z1416)
+    arc 22 24 ($L $y1618 $z1618)
+    
+    arc 15  17  (0  $y1517 $z1517)
+    arc 17  19  (0  $y1719 $z1719)
+    arc 21 23 ($L $y1517 $z1517)
+    arc 23 25 ($L $y1719 $z1719)
+);
+
+
+   boundary
+	(
+    inlet 
+    {
+        type patch;
+        faces
+        (
+            (0 3 5 1)
+            (1 5 6 2)
+            (3 4 6 5)
+        );
+    }
+    
+    wall_inlet 
+    {
+        type wall;
+        faces
+        (
+            (2 14 16 6)
+            (6 16 18 4)
+            (14 15 17 16)
+            (16 17 19 18)
+        );
+    }
+    
+
+    outlet
+    {
+        type patch;
+        faces
+        (
+            (7 10 12 8)
+            (8 12 13 9)
+            (10 11 13 12)
+            (9 20 22 13)
+            (13 22 24 11)
+            (20 21 23 22)
+            (22 23 25 24)            
+        );
+    }
+
+    wall
+    {
+        type wall;
+        faces
+        (
+            (15 17 23 21)
+            (17 19 25 23)
+        );
+    }
+
+    front
+    {
+        type empty;
+        faces
+        (
+            (0 7 8 1)
+            (1 8 9 2)
+            (2 14 20 9)
+            (14 15 21 20)
+        );
+    }
+
+    back
+    {
+        type empty;
+        faces
+        (
+            (0 3 10 7)
+            (3 4 11 10)
+            (4 18 24 11)
+            (18 19 25 24)
+        );
+    }
+    
+);
+
+mergePatchPairs
+(
+);
+
+//---------------------------------------------------------------------------//
+

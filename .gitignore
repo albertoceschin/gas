@@ -5,11 +5,11 @@
 *~
 .*~
 .*.swp
-*.png
 *.bak
 *.eMesh
+*.png
+*.svg
 *log.*
-# *.txt
 *.bak[0-9][0-9]
 \#*\#
 
@@ -24,11 +24,6 @@
 **/VTK
 **/[0-9]*
 **/extendedFeatureEdgeMesh
-**/.idea
-**/Release/*
-**/build/*
-**/Debug/*
-**/output/*
 
 
 # Backup/recovery versions - anywhere
@@ -100,3 +95,52 @@ doc/Doxygen/DTAGS
 
 # Ignore the test directory
 /tutorialsTest
+
+
+
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+pip-log.txt
+pip-delete-this-directory.txt
+
+.ipynb_checkpoints
+
+.ropeproject
+.idea
+__pycache__
+

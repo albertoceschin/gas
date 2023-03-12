@@ -1,7 +1,7 @@
 ## Content
 
 * Kaust development regarding gasification project.
-* .bash_ccc: aliases for paths
+* .bash_gas: aliases for paths. Add your own machines.
 
 ### Note
 
