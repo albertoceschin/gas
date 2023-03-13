@@ -10,35 +10,42 @@ FoamFile
     version     2.0;
     format      ascii;
     class       volScalarField;
-    object      p;
+    object      G;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [1 -1 -2 0 0 0 0];
+dimensions      [1 0 -3 0 0 0 0];
 
-internalField   uniform 100000;
+internalField   uniform 0;
 
 boundaryField
 {
-    inlet
+    top
     {
-        type            zeroGradient;
+        type            MarshakRadiation;
+        value           uniform 0;
     }
 
-    wall_inlet
+    bottom
     {
-        type            zeroGradient;
+        type            MarshakRadiation;
+        value           uniform 0;
     }
 
-    wall
+    walls
     {
-        type            zeroGradient;
+        type            MarshakRadiation;
+        value           uniform 0;
     }
 
-    outlet
+    symmetry
     {
-        type            fixedValue;
-        value           $internalField;
+        type            symmetryPlane;
+    }
+
+    frontAndBack
+    {
+        type            empty;
     }
 }
 

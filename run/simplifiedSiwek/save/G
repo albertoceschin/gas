@@ -20,32 +20,28 @@ internalField   uniform 0;
 
 boundaryField
 {
-    top
+    inlet
     {
         type            MarshakRadiation;
         value           uniform 0;
     }
 
-    bottom
+    wall_inlet
     {
         type            MarshakRadiation;
         value           uniform 0;
     }
 
-    walls
+    wall
     {
         type            MarshakRadiation;
         value           uniform 0;
     }
 
-    symmetry
+    outlet
     {
-        type            symmetryPlane;
-    }
-
-    frontAndBack
-    {
-        type            empty;
+        type            MarshakRadiation;
+        value           uniform 0;
     }
 }
 

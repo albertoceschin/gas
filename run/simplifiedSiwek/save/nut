@@ -20,32 +20,28 @@ internalField   uniform 0;
 
 boundaryField
 {
-    top
+    inlet
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+
+    wall_inlet
     {
         type            nutkWallFunction;
         value           uniform 0;
     }
 
-    bottom
+    wall
     {
         type            nutkWallFunction;
         value           uniform 0;
     }
 
-    walls
+    outlet
     {
-        type            nutkWallFunction;
+        type            calculated;
         value           uniform 0;
-    }
-
-    symmetry
-    {
-        type            symmetryPlane;
-    }
-
-    frontAndBack
-    {
-        type            empty;
     }
 }
 

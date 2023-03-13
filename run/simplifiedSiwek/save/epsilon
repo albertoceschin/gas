@@ -20,32 +20,28 @@ internalField   uniform 5390.5;
 
 boundaryField
 {
-    top
+    inlet
+    {
+        type            fixedValue;
+        value           uniform 1e-5;
+    }
+
+    outlet
+    {
+        type            calculated;
+        value           $internalField;
+    }
+
+    wall
     {
         type            epsilonWallFunction;
         value           uniform 5390.5;
     }
-
-    bottom
+    
+    wall_inlet
     {
         type            epsilonWallFunction;
         value           uniform 5390.5;
-    }
-
-    walls
-    {
-        type            epsilonWallFunction;
-        value           uniform 5390.5;
-    }
-
-    symmetry
-    {
-        type            symmetryPlane;
-    }
-
-    frontAndBack
-    {
-        type            empty;
     }
 }
 

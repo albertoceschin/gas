@@ -20,30 +20,29 @@ internalField   uniform (0 0 0);
 
 boundaryField
 {
-    top
+    inlet
+    {
+        type            fixedValue;
+        value           uniform (0 0 -1);
+    }
+
+    wall_inlet
     {
         type            noSlip;
     }
 
-    bottom
+    wall
     {
         type            noSlip;
     }
 
-    walls
+    outlet
     {
-        type            noSlip;
+        type            inletOutlet;
+        inletValue      $internalField;
     }
 
-    symmetry
-    {
-        type            symmetryPlane;
-    }
 
-    frontAndBack
-    {
-        type            empty;
-    }
 }
 
 

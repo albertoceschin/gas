@@ -25,7 +25,7 @@ boundaryField
         type            zeroGradient;
     }
 
-    wall_inlet
+    inlet_wall
     {
         type            zeroGradient;
     }
@@ -37,7 +37,7 @@ boundaryField
 
     outlet
     {
-        type            fixedValue;
+        type            calculated; //fixedValue;
         value           $internalField;
     }
 }

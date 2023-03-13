@@ -20,29 +20,24 @@ internalField   uniform 0.0;
 
 boundaryField
 {
-    top
+    inlet
     {
         type            zeroGradient;
     }
 
-    bottom
+    wall_inlet
     {
         type            zeroGradient;
     }
 
-    walls
+    wall
     {
         type            zeroGradient;
     }
 
-    symmetry
+    outlet
     {
-        type            symmetryPlane;
-    }
-
-    frontAndBack
-    {
-        type            empty;
+        type            zeroGradient;
     }
 }
 

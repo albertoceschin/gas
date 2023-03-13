@@ -22,8 +22,8 @@ actions
         action new;
 
         source  sphereToCell;
-        origin  (0.125 0.375 0.05);
-        radius  0.005;
+        origin  (0. 0. -1e-2);
+        radius  0.003;
     }
 );
 

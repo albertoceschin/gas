@@ -10,10 +10,10 @@ runApplication blockMesh
 runApplication -s 1 mirrorMesh -dict system/mirrorMeshDict1 -overwrite
 runApplication -s 2 mirrorMesh -dict system/mirrorMeshDict2 -overwrite
 
-runApplication transformPoints -rotate-y 90
+runApplication transformPoints -rotate-angle '((0 1 0) 90)'
 
 # Create ignition cells cellSet
-# runApplication topoSet # AC maybe deactivate for now
+runApplication topoSet # AC maybe deactivate for now
 
 runApplication decomposePar
 
