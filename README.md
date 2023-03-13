@@ -1,12 +1,18 @@
+## TO DO
+
+- [ ] Adapt *simplifiedSiwek* tutorial to gasifier mesh.
+- [ ] Switch from coal feed to something more close to VRO. 
+- [ ] Eulerian to Lagrangian using OF tools; using *tutorials/multiphase/interFoam/laminar/vofToLagrangian* as template.
+
 ## Content
 
 * Kaust development regarding gasification project.
-* .bash_gas: aliases for paths. Add your own machines.
+* .bash_gas: aliases for paths. Add your own machines once sourcing of2212.
 
 ## Folders
-* /run/simplifiedSiwek from OF tutorial. Goal is to adapt tutorial to new mesh closer to Kaust gasifier.
+* */run/simplifiedSiwek* from OF tutorial. Goal is to adapt tutorial to new mesh closer to Kaust gasifier.
 
-### Note
+## Note
 
 * Using OF2212
 

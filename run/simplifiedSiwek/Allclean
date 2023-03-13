@@ -3,7 +3,7 @@ cd "${0%/*}" || exit                                # Run from this directory
 . ${WM_PROJECT_DIR:?}/bin/tools/CleanFunctions      # Tutorial clean functions
 #------------------------------------------------------------------------------
 
-rm -r processor* constant/polyMesh log* 0 [0-9]* 
+rm -r processor* constant/polyMesh log* 0 [0-9]* postProcessing
 echo Case cleaned
 cp -r save 0
 echo Folder 0 initialized
