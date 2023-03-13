@@ -83,15 +83,15 @@ subModels
             type            manualInjection;
             massTotal       0.0001;
             parcelBasisType mass;
-            SOI             0;
+            SOI             1;
             positionsFile   "coalCloud1Positions";
-            U0              (0 -10 0);
+            U0              (0 0 -10);
             sizeDistribution
             {
                 type        RosinRammler;
                 RosinRammlerDistribution
                 {
-                    minValue        5e-06;
+                    minValue        1e-4;//5e-06;
                     maxValue        0.0005;
                     lambda          5e-05;
                     n               0.5;
