@@ -23,6 +23,7 @@
 **/polyMesh
 **/VTK
 **/[0-9]*
+**/0
 **/extendedFeatureEdgeMesh
 
 

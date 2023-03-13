@@ -26,9 +26,9 @@ scale 1;
 //GEOMETRY POINTS
 diam	  0.01;
 
-Length_diam 16;
-Rint_diam 2;
-Rext_diam 10;
+Length_diam 10;
+Rint_diam 1;
+Rext_diam 4;
 
 L	#calc	"$Length_diam*$diam";
 R	#calc	"0.5*$diam";
@@ -65,13 +65,13 @@ z1719	#calc	"$Rext*sin($rad4+$rad2)";
 
 //MESH POINTS
 
-Half_Pipe 	2;
+Half_Pipe 	3;
 //Internal_Inflow 	#calc "2*$Rint_diam*$Half_Pipe";
 //External_Inflow		#calc "$Rext_diam*$Half_Pipe/2";
 Internal_Inflow      8; 
 External_Inflow      20;
 
-LP 		20;
+LP 		50;
 
 
 vertices
