@@ -1,7 +1,8 @@
 ## TO DO
 
-- [ ] Adapt *simplifiedSiwek* tutorial to gasifier mesh.
+- [ ] Adapt *simplifiedSiwek* tutorial to gasifier mesh. We should have already some measure of the reactor.
 - [ ] Switch from coal feed to something more close to VRO. 
+- [ ] List features we need to implement so we can plan better.
 - [ ] Eulerian to Lagrangian using OF tools; using *tutorials/multiphase/interFoam/laminar/vofToLagrangian* as template.
 
 ## Content
@@ -12,7 +13,7 @@
 ## Folders
 * */run/simplifiedSiwek* from OF tutorial. Goal is to adapt tutorial to new mesh closer to Kaust gasifier.
 
-## Note
+## Notes
 
 * Using OF2212
 
