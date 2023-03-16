@@ -36,8 +36,8 @@ Rhalf	#calc	"0.5*$R";
 Rint  	#calc	"$Rint_diam*$R+$R";
 Rext	#calc	"$Rext_diam*$R+$Rint";
 
-y1	#calc	"0.5*$R*cos($rad2)";
-z1	#calc	"0.5*$R*sin($rad2)";
+y1	#calc	"0.6*$R*cos($rad2)"; // to increase orthogonality
+z1	#calc	"0.6*$R*sin($rad2)";
 y2	#calc	"$R*cos($rad2)";
 z2	#calc	"$R*sin($rad2)";
 y3	#calc	"$Rint*cos($rad2)";

@@ -1,11 +1,13 @@
 ## Description
 
-* From tutorial: OpenFOAM-v2212/tutorials/lagrangian/coalChemistryFoam/simplifiedSiwek
+* From tutorial: OpenFOAM-v2212/tutorials/lagrangian/coalChemistryFoam/simplifiedSiwek. Goal is to adapt it as much as possible to KAUST gasifier, in order to understand what is missing and has to be implemented.
 
-## Tasks for Chiara
+## Tasks 
 
-- [ ] Change names of patches in /save and /constant in order to adapt tutorial to the pipe mesh. 
-- [x] Adapt geometry in blockMeshDict to something meaningful. Then flowrates too.
+- [x] Change names of patches in /save and /constant in order to adapt tutorial to the pipe mesh. 
+- [x] Adapt geometry in blockMeshDict to something meaningful. 
+- [x] Changed injection to cone injection.
+- [ ] Update species and flowrates. Idea was to use one liquid, one solid and multiple gas species to implement missing reactions. For now, realistic but no real.
 
 ## Notes
 
