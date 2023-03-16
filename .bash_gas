@@ -1,13 +1,13 @@
 if [[ $(hostname -d) == "hpc.kaust.edu.sa" ]]; then
-    alias gas='cd /project/k1459/ceschia/OpenFOAM/gas'
-    alias gasrun='cd /project/k1459/ceschia/OpenFOAM/gas/src/run'
-    alias gassol='cd /project/k1459/ceschia/OpenFOAM/gas/solver'
-    alias gassrc='cd /project/k1459/ceschia/OpenFOAM/gas/src'
-    alias gasutil='cd /project/k1459/ceschia/OpenFOAM/gas/utility'
+    export LOCAL_FOAM=/project/k1459/ceschia/OpenFOAM
+elif [[ $(hostname -d) == "lenovo" ]]; then
+    export LOCAL_FOAM=/mnt/NewHDD
 else
-    alias gas='cd ~/OpenFOAM/gas'
-    alias gassol='cd ~/OpenFOAM/gas/solver'
-    alias gassrc='cd ~/OpenFOAM/gas/src'
-    alias gasrun='cd ~/OpenFOAM/gas/run'
-    alias gasutil='cd ~/OpenFOAM/gas/utility'
+    export LOCAL_FOAM=~/OpenFOAM
 fi
+
+alias gas='cd $LOCAL_FOAM/gas'
+alias gassol='cd $LOCAL_FOAM/gas/solver'
+alias gassrc='cd $LOCAL_FOAM/gas/src'
+alias gasrun='cd $LOCAL_FOAM/gas/run'
+alias gasutil='cd $LOCAL_FOAM/gas/utility'
