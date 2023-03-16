@@ -1,6 +1,6 @@
 if [[ $(hostname -d) == "hpc.kaust.edu.sa" ]]; then
     export LOCAL_FOAM=/project/k1459/ceschia/OpenFOAM
-elif [[ $(hostname -d) == "lenovo" ]]; then
+elif [[ $(hostname) == "lenovo" ]]; then
     export LOCAL_FOAM=/mnt/NewHDD
 else
     export LOCAL_FOAM=~/OpenFOAM

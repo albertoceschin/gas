@@ -65,13 +65,13 @@ z1719	#calc	"$Rext*sin($rad4+$rad2)";
 
 //MESH POINTS
 
-Half_Pipe 	3;
+Half_Pipe 	2;
 //Internal_Inflow 	#calc "2*$Rint_diam*$Half_Pipe";
 //External_Inflow		#calc "$Rext_diam*$Half_Pipe/2";
-Internal_Inflow      8; 
-External_Inflow      20;
+Internal_Inflow      4; 
+External_Inflow      15;
 
-LP 		50;
+LP 		200;
 
 
 vertices
