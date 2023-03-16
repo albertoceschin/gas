@@ -11,7 +11,7 @@ runApplication -s 1 mirrorMesh -dict system/mirrorMeshDict1 -overwrite
 runApplication -s 2 mirrorMesh -dict system/mirrorMeshDict2 -overwrite
 
 runApplication -s 1 transformPoints -rotate-angle '((0 1 0) 90)'
-runApplication -s 2 transformPoints -scale '(10 10 10)'
+runApplication -s 2 transformPoints -scale '(3.334 3.334 20)'
 
 # Create ignition cells cellSet
 runApplication topoSet # AC maybe deactivate for now
