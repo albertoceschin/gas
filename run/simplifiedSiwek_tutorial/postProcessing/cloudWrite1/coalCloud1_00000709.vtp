@@ -1,0 +1,47 @@
+<?xml version='1.0'?>
+<!-- case='simplifiedSiwek_tutorial' cloud='coalCloud1' time='0.448' index='709' -->
+<VTKFile type='PolyData' version='0.1' byte_order='LittleEndian' header_type='UInt64'>
+  <PolyData>
+    <FieldData>
+      <DataArray type='Float32' Name='TimeValue' NumberOfTuples='1' format='binary'>
+BAAAAAAAAABCYOU+
+      </DataArray>
+    </FieldData>
+    <Piece NumberOfPoints='27'>
+      <Points>
+        <DataArray type='Float32' Name='Points' NumberOfComponents='3' format='binary'>
+RAEAAAAAAAAyJ647swAMP83MTD1joUY8fXkTP83MTD2U5408Pw3sPs3MTD1nYp08suwnP83MTD3TcBo8mFYlP83MTD2LEUs9nHADP83MTD3v32Y2dEwXP83MTD0kTqA6Q94dP83MTD21P0k9mnoQP83MTD0vNLc8Cj0nP83MTD32l9M8kKJHP83MTD03dG41rKMvP83MTD38CLE6ZAk3P83MTD2BCpM9otC7Ps3MTD0lqxg8R3S2Ps3MTD2NYjw7F8A5P83MTD0+Ago8U1EqP83MTD3Fj6U7MuGaO83MTD1QVBk9sj0RPc3MTD07vlY9r0HiO83MTD0ZeJA7FY2ZPM3MTD0K3pk8FP6NPM3MTD1qWJ09wlAVPc3MTD1grds8jjiMPc3MTD0nQOw8l2g/Ps3MTD232kg+IchAPs3MTD3D8UM7C1VpPs3MTD0=
+        </DataArray>
+      </Points>
+      <PointData>
+        <DataArray type='Float32' Name='T' format='binary'>
+bAAAAAAAAAB9fNNDxbzNQ1yn+0PszslDxaTJQ01m20OYU8xD2TjLQ4Bi0UOOJcpDr3HNQx97y0OVQs1DofgkRAGwBkRJNM1DEAfLQ2SU0kPaF8dDaPHJQ6TR0EN0lcxD3+TOQz1rz0MKC9lDu+XVQ0RE4UM=
+        </DataArray>
+        <DataArray type='Float32' Name='YC(s)' format='binary'>
+bAAAAAAAAAAuG10/LhtdPxwbXT/7KFU/v1lcPy4bXT8uG10/LhtdPy4bXT8uG10/LRtdPy4bXT8uG10/WRldPyEbXT8uG10/LhtdPy4bXT8YNS0/wo4/Py4bXT9E/lc/LhtdPy4bXT8uG10/LhtdPyobXT8=
+        </DataArray>
+        <DataArray type='Float32' Name='YCH4(g)' format='binary'>
+bAAAAAAAAAAAAAAAAAAAAAAAAADT0bE8yEUHOwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB+/AU+ok+lPQAAAAB81mQ8AAAAAAAAAAAAAAAAAAAAAAAAAAA=
+        </DataArray>
+        <DataArray type='Float32' Name='YCO2(g)' format='binary'>
+bAAAAAAAAAAAAAAAAAAAAAAAAAAn4C48cQiFOgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACbxIM9+pIiPQAAAACTDOE7AAAAAAAAAAAAAAAAAAAAAAAAAAA=
+        </DataArray>
+        <DataArray type='Float32' Name='YH2(g)' format='binary'>
+bAAAAAAAAAAAAAAAAAAAAAAAAADfKmk7lmCxOQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADOsK88+MNYPAAAAABiCBY7AAAAAAAAAAAAAAAAAAAAAAAAAAA=
+        </DataArray>
+        <DataArray type='Float32' Name='YH2O(l)' format='binary'>
+bAAAAAAAAAB9HZAmfR2QJn0dkCZ9HZAmfR2QJn0dkCZ9HZAmfR2QJn0dkCZ9HZAmfR2QJn0dkCZ9HZAmfR2QJn0dkCZ9HZAmfR2QJn0dkCZ9HZAmfR2QJn0dkCZ9HZAmfR2QJn0dkCZ9HZAmfR2QJn0dkCY=
+        </DataArray>
+        <DataArray type='Float32' Name='Yash(s)' format='binary'>
+bAAAAAAAAABIkws+SJMLPpCTCz4rjwY+KxkLPkmTCz5Hkws+R5MLPkeTCz5Hkws+SpMLPkiTCz5Ikws+nZoLPnuTCz5Ikws+R5MLPkeTCz5yrdo9VNjxPUeTCz4DWQg+R5MLPkeTCz5Ikws+SJMLPleTCz4=
+        </DataArray>
+        <DataArray type='Float32' Name='d' format='binary'>
+bAAAAAAAAADDguc3m1LaN9mxlTcIowQ3EeoXN7b6+zcozEM3HsiVN/azFTjuliU3FNI7N+9HPDdBA5g3SqgHOXA1CDkP1no3lI0IONIrWDlthbg5z0KiObRG9DgyaZc5tCgROTh2XznRMvk4G5sLORvHfDg=
+        </DataArray>
+        <DataArray type='Float32' Name='U' NumberOfComponents='3' format='binary'>
+RAEAAAAAAACqlHi+LtU6vgAAAAAkW5M9ouIBPwAAAADfJj2/qVWqvgAAAABayPu8tEuiPAAAAAAbEBu9nOC/PAAAAABAwak7RnTAvAAAAAAaz/O70/VWvQAAAABPlO87/rAKPgAAAADuuLI7y16PvAAAAAAZrVa++oICPgAAAABl6YO9iVvdvAAAAAA7PhS7gLGSvQAAAADq04s7/K6KvAAAAACIzIS+grcqvQAAAAB4d6I9FplevgAAAAABhFq+IjsRPgAAAACSciy99lzKPQAAAAAPgr48tJ01vQAAAAB9W5A9m2EYPwAAAAA9Vwo9/0ZivwAAAACmEDc89/oNvgAAAABacJK8XF6YPgAAAABb7Qm+a9xjvgAAAAB/aZ494fy2vgAAAADfJqw8IuBovgAAAABhZZe+Sbz6vgAAAAAEB2o93Lr0OwAAAAA=
+        </DataArray>
+      </PointData>
+    </Piece>
+  </PolyData>
+</VTKFile>

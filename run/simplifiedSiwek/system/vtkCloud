@@ -23,8 +23,8 @@ cloudWrite1
     // directory       "VTK";
 
     //- Write more frequent than fields
-    writeControl    adjustable;
-    writeInterval   0.001;
+    writeControl    writeTime;//adjustable;
+    //writeInterval   0.001;
 }
 
 

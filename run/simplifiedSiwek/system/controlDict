@@ -46,14 +46,14 @@ runTimeModifiable true;
 
 adjustTimeStep  yes;
 
-maxCo           1;
+maxCo           0.9;
 
-maxDeltaT       1;
+maxDeltaT       1e-1;
 
 functions
 {
     #include "dataCloud"
-//    #include "vtkCloud"
+    #include "vtkCloud"
 //    #include "runTimePostProcessing"
 }
 

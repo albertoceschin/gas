@@ -1,0 +1,29 @@
+<?xml version='1.0'?>
+<!-- case='simplifiedSiwek_tutorial' cloud='limestoneCloud1' time='0.442' index='703' -->
+<VTKFile type='PolyData' version='0.1' byte_order='LittleEndian' header_type='UInt64'>
+  <PolyData>
+    <FieldData>
+      <DataArray type='Float32' Name='TimeValue' NumberOfTuples='1' format='binary'>
+BAAAAAAAAADTTeI+
+      </DataArray>
+    </FieldData>
+    <Piece NumberOfPoints='0'>
+      <Points>
+        <DataArray type='Float32' Name='Points' NumberOfComponents='3' format='binary'>
+AAAAAAAAAAA=
+        </DataArray>
+      </Points>
+      <PointData>
+        <DataArray type='Float32' Name='T' format='binary'>
+AAAAAAAAAAA=
+        </DataArray>
+        <DataArray type='Float32' Name='d' format='binary'>
+AAAAAAAAAAA=
+        </DataArray>
+        <DataArray type='Float32' Name='U' NumberOfComponents='3' format='binary'>
+AAAAAAAAAAA=
+        </DataArray>
+      </PointData>
+    </Piece>
+  </PolyData>
+</VTKFile>
