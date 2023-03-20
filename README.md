@@ -1,6 +1,7 @@
 ## TO DO
 
-- [ ] Adapt *simplifiedSiwek* tutorial to gasifier mesh. We should have already some measure of the reactor.
+- [x] Adapt *simplifiedSiwek* tutorial to gasifier mesh. 
+- [ ] Have realistic flowrates and conditions.
 - [ ] Switch from coal feed to something more close to VRO. 
 - [ ] List features we need to implement so we can plan better.
 - [ ] Eulerian to Lagrangian using OF tools; using *tutorials/multiphase/interFoam/laminar/vofToLagrangian* as template.
