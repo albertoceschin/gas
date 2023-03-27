@@ -14,7 +14,8 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application     coalChemistryFoam;
+//application     coalChemistryFoam;
+application     gasificationFoam;
 
 startFrom       latestTime;
 
@@ -49,6 +50,12 @@ adjustTimeStep  yes;
 maxCo           0.9;
 
 maxDeltaT       1e-1;
+
+libs
+    (
+    "libcoalCombustion.so" // keep same name hoping for overload
+  );
+
 
 functions
 {

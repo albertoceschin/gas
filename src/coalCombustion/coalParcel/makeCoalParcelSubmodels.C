@@ -27,14 +27,12 @@ License
 
 #include "coalCloud.H"
 #include "makeCoalParcelSurfaceReactionModels.H"
-#include "makeCoalParcelLiquidSolidReactionModels.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 namespace Foam
 {
     makeCoalParcelSurfaceReactionModels(coalCloud);
-    makeCoalParcelLiquidSolidReactionModels(coalCloud);
 }
 
 

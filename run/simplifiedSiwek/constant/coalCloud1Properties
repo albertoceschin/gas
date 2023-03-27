@@ -132,7 +132,8 @@ subModels
 
     stochasticCollisionModel none;
 
-    surfaceReactionModel COxidationKineticDiffusionLimitedRate;
+    //surfaceReactionModel COxidationKineticDiffusionLimitedRate;
+    surfaceReactionModel Pyrolysis;
 
     surfaceFilmModel none;
 
@@ -202,6 +203,14 @@ subModels
         C1              5.0E-12;
         C2              0.002;
         E               7.9E+07;
+    }
+    PyrolysisCoeffs // AC
+    {
+        Sb              1;
+        C1              5.0E-12;
+        C2              0.002;
+        E               7.9E+07;
+        waterToAsh      1;
     }
 }
 

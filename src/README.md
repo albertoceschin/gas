@@ -1,5 +1,6 @@
 ## Strategy
 
+* 27 March: copy COxidationKineticDiffusionLimitedRate and extend to Pyrolysis.
 *src/lagrangian/intermediate/clouds/Templates/ReactingMultiphaseCloud/ReactingMultiphaseCloud.C* has most of the capabilities needed. 
 It has also *src/lagrangian/intermediate/submodels/HeterogeneousReactingModel/MUCSheterogeneousRate* from D. Papanastassiou and G. Bitsianes, Modelling of Heterogeneous Gas-Solid Reactions.
 

@@ -36,6 +36,7 @@ License
 #include "COxidationKineticDiffusionLimitedRate.H"
 #include "COxidationHurtMitchell.H"
 #include "COxidationMurphyShaddix.H"
+#include "Pyrolysis.H" // AC
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -49,7 +50,8 @@ License
     );                                                                         \
     makeSurfaceReactionModelType(COxidationIntrinsicRate, CloudType);          \
     makeSurfaceReactionModelType(COxidationHurtMitchell, CloudType);           \
-    makeSurfaceReactionModelType(COxidationMurphyShaddix, CloudType);
+    makeSurfaceReactionModelType(COxidationMurphyShaddix, CloudType);          \
+    makeSurfaceReactionModelType(Pyrolysis, CloudType);
 
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
