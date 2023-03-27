@@ -7,7 +7,7 @@
 - [x] Change names of patches in /save and /constant in order to adapt tutorial to the pipe mesh. 
 - [x] Adapt geometry in blockMeshDict to something meaningful. 
 - [x] Changed injection to cone injection.
-- [ ] Test if reaction on, if conditions similar to the turorial.
+- [x] Test if reaction on, if conditions similar to the turorial.
 - [ ] Update species and flowrates (coal -> VRO). Idea was to use one liquid, one solid and multiple gas species to implement missing reactions. For now, realistic but no real.
 
 ## Notes
