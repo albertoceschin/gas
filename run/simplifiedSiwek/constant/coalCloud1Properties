@@ -82,7 +82,7 @@ subModels
         {
             type            coneNozzleInjection;
             SOI             0;
-            massTotal       6.0e-6;
+            massTotal       6.0e-5;
             parcelBasisType mass;
             injectionMethod disc;
             flowType        flowRateAndDischarge;
@@ -117,28 +117,6 @@ subModels
             }
         }
     }
-
-        // Original tutorial
-        //model1
-        //{
-        //    type            manualInjection;
-        //    massTotal       0.00005;
-        //    parcelBasisType mass;
-        //    SOI             0;
-        //    positionsFile   "coalCloud1Positions";
-        //    U0              (0 0 -1);
-        //    sizeDistribution
-        //    {
-        //        type        RosinRammler;
-        //        RosinRammlerDistribution
-        //        {
-        //            minValue        5e-6;//5e-06;
-        //            maxValue        1e-5;
-        //            lambda          5e-05;
-        //            n               0.5;
-        //        }
-        //    }
-        //}
 
     dispersionModel stochasticDispersionRAS;
 

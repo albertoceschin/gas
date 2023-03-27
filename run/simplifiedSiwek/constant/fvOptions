@@ -18,8 +18,8 @@ source1
 {
     type            fixedTemperatureConstraint;
 
-    timeStart       0.1;
-    duration        0.4;
+    timeStart       1;
+    duration        1;
     selectionMode   cellSet;
     cellSet         ignitionCells;
 
