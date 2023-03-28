@@ -163,7 +163,9 @@ subModels
             }
             liquid
             {
-                H2O             1;
+                H2O             0.9;
+                C10H22          0.1;
+                C8H18           0;
             }
             solid
             {

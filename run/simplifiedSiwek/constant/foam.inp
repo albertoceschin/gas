@@ -6,6 +6,8 @@ species
     H2
     CO2
     H2O
+    C8H18
+    C10H22
 );
 
 reactions

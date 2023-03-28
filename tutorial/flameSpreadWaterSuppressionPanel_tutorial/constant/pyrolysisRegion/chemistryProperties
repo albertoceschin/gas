@@ -10,48 +10,24 @@ FoamFile
     version     2.0;
     format      ascii;
     class       dictionary;
-    object      thermophysicalProperties;
+    object      chemistryProperties;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-thermoType
+chemistryType
 {
-    type            hePsiThermo;
-    mixture         reactingMixture;
-    transport       sutherland;
-    thermo          janaf;
-    energy          sensibleEnthalpy;
-    equationOfState perfectGas;
-    specie          specie;
+    chemistrySolver   ode;
+    chemistryThermo   pyrolysis;
 }
 
-chemistryReader foamChemistryReader;
+chemistry           on;
 
-foamChemistryThermoFile "<constant>/foam.dat";
+initialChemicalTimeStep 1e-07;
 
-foamChemistryFile "<constant>/foam.inp";
-
-inertSpecie     N2;
-
-liquids
+odeCoeffs
 {
-    H2O;
-    C8H18;
-    C10H22;
-}
-
-solids
-{
-    C
-    {
-        rho             2010;
-        Cp              710;
-        kappa           0.04;
-        Hf              0;
-        emissivity      1.0;
-    }
-
-    ash;
+    solver          seulex;
+    eps             0.05;
 }
 
 

@@ -10,49 +10,44 @@ FoamFile
     version     2.0;
     format      ascii;
     class       dictionary;
-    object      thermophysicalProperties;
+    object      topoSetDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-thermoType
-{
-    type            hePsiThermo;
-    mixture         reactingMixture;
-    transport       sutherland;
-    thermo          janaf;
-    energy          sensibleEnthalpy;
-    equationOfState perfectGas;
-    specie          specie;
-}
-
-chemistryReader foamChemistryReader;
-
-foamChemistryThermoFile "<constant>/foam.dat";
-
-foamChemistryFile "<constant>/foam.inp";
-
-inertSpecie     N2;
-
-liquids
-{
-    H2O;
-    C8H18;
-    C10H22;
-}
-
-solids
-{
-    C
+actions
+(
     {
-        rho             2010;
-        Cp              710;
-        kappa           0.04;
-        Hf              0;
-        emissivity      1.0;
+        name    f0;
+        type    faceSet;
+        action  new;
+        source  boxToFace;
+        box     (-1 -0.00001 -0.00001) (1 1.00001 0.00001);
     }
 
-    ash;
-}
+    {
+        name    f1;
+        type    faceSet;
+        action  new;
+        source  boxToFace;
+        box     (-1 0.99999 -0.00001) (1 1.00001 2.00001);
+    }
+
+    {
+        name    f2;
+        type    faceSet;
+        action  new;
+        source  boxToFace;
+        box     (-1 -0.00001 1.99999) (1 1.00001 2.00001);
+    }
+
+    {
+        name    f3;
+        type    faceSet;
+        action  new;
+        source  boxToFace;
+        box     (-1 -0.00001 -0.00001) (1 0.00001 2.00001);
+    }
+);
 
 
 // ************************************************************************* //

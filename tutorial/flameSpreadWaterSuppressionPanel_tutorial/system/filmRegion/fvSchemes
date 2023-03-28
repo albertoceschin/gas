@@ -10,48 +10,36 @@ FoamFile
     version     2.0;
     format      ascii;
     class       dictionary;
-    object      thermophysicalProperties;
+    object      fvSchemes;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-thermoType
+ddtSchemes
 {
-    type            hePsiThermo;
-    mixture         reactingMixture;
-    transport       sutherland;
-    thermo          janaf;
-    energy          sensibleEnthalpy;
-    equationOfState perfectGas;
-    specie          specie;
+    default         Euler;
 }
 
-chemistryReader foamChemistryReader;
-
-foamChemistryThermoFile "<constant>/foam.dat";
-
-foamChemistryFile "<constant>/foam.inp";
-
-inertSpecie     N2;
-
-liquids
+divSchemes
 {
-    H2O;
-    C8H18;
-    C10H22;
+    default         none;
+    div(phi,Uf)     Gauss upwind;
+    div(phid,deltaf) Gauss upwind;
+    div(phi,hf)     Gauss upwind;
 }
 
-solids
+gradSchemes
 {
-    C
-    {
-        rho             2010;
-        Cp              710;
-        kappa           0.04;
-        Hf              0;
-        emissivity      1.0;
-    }
+    default         Gauss linear;
+}
 
-    ash;
+laplacianSchemes
+{
+    default         Gauss linear uncorrected;
+}
+
+snGradSchemes
+{
+    default         uncorrected;
 }
 
 

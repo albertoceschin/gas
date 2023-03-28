@@ -10,22 +10,15 @@ FoamFile
     version     2.0;
     format      ascii;
     class       dictionary;
-    object      fvOptions;
+    object      surfaceFilmProperties;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-source1
-{
-    type            fixedTemperatureConstraint;
+surfaceFilmModel none;
 
-    timeStart       1;
-    duration        5;
-    selectionMode   cellSet;
-    cellSet         ignitionCells;
+region          none;
 
-    mode            uniform;
-    temperature     2000;
-}
+active          false;
 
 
 // ************************************************************************* //

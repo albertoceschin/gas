@@ -17,7 +17,7 @@ FoamFile
 thermoType
 {
     type            hePsiThermo;
-    mixture         reactingMixture;
+    mixture         singleStepReactingMixture;
     transport       sutherland;
     thermo          janaf;
     energy          sensibleEnthalpy;
@@ -25,34 +25,15 @@ thermoType
     specie          specie;
 }
 
+inertSpecie N2;
+
+fuel        CH4;
+
 chemistryReader foamChemistryReader;
 
-foamChemistryThermoFile "<constant>/foam.dat";
+foamChemistryFile "<constant>/reactions";
 
-foamChemistryFile "<constant>/foam.inp";
-
-inertSpecie     N2;
-
-liquids
-{
-    H2O;
-    C8H18;
-    C10H22;
-}
-
-solids
-{
-    C
-    {
-        rho             2010;
-        Cp              710;
-        kappa           0.04;
-        Hf              0;
-        emissivity      1.0;
-    }
-
-    ash;
-}
+foamChemistryThermoFile "<constant>/thermo.compressibleGas";
 
 
 // ************************************************************************* //

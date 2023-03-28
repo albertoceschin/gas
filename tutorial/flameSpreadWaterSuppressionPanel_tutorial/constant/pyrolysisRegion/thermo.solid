@@ -10,49 +10,51 @@ FoamFile
     version     2.0;
     format      ascii;
     class       dictionary;
-    object      thermophysicalProperties;
+    object      thermo.solid;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-thermoType
+wood
 {
-    type            hePsiThermo;
-    mixture         reactingMixture;
-    transport       sutherland;
-    thermo          janaf;
-    energy          sensibleEnthalpy;
-    equationOfState perfectGas;
-    specie          specie;
-}
-
-chemistryReader foamChemistryReader;
-
-foamChemistryThermoFile "<constant>/foam.dat";
-
-foamChemistryFile "<constant>/foam.inp";
-
-inertSpecie     N2;
-
-liquids
-{
-    H2O;
-    C8H18;
-    C10H22;
-}
-
-solids
-{
-    C
+    specie
     {
-        rho             2010;
-        Cp              710;
-        kappa           0.04;
-        Hf              0;
-        emissivity      1.0;
+        molWeight   100;
     }
+    transport
+    {
+        kappa       0.135;
+    }
+    thermodynamics
+    {
+        Cp          696;
+        Hf          -1.41e6;
+    }
+    equationOfState
+    {
+        rho         114.7;
+    }
+};
 
-    ash;
-}
+char
+{
+    specie
+    {
+        molWeight   50;
+    }
+    transport
+    {
+        kappa       0.4;
+    }
+    thermodynamics
+    {
+        Cp          611;
+        Hf          0;
+    }
+    equationOfState
+    {
+        rho         11.5;
+    }
+};
 
 
 // ************************************************************************* //

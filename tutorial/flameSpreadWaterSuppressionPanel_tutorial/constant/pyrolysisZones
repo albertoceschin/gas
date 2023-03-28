@@ -10,48 +10,32 @@ FoamFile
     version     2.0;
     format      ascii;
     class       dictionary;
-    object      thermophysicalProperties;
+    object      pyrolysisZones;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-thermoType
+pyrolysis
 {
-    type            hePsiThermo;
-    mixture         reactingMixture;
-    transport       sutherland;
-    thermo          janaf;
-    energy          sensibleEnthalpy;
-    equationOfState perfectGas;
-    specie          specie;
-}
+    active          true;
 
-chemistryReader foamChemistryReader;
+    pyrolysisModel  reactingOneDim;
 
-foamChemistryThermoFile "<constant>/foam.dat";
+    region          pyrolysisRegion;
 
-foamChemistryFile "<constant>/foam.inp";
-
-inertSpecie     N2;
-
-liquids
-{
-    H2O;
-    C8H18;
-    C10H22;
-}
-
-solids
-{
-    C
+    reactingOneDimCoeffs
     {
-        rho             2010;
-        Cp              710;
-        kappa           0.04;
-        Hf              0;
-        emissivity      1.0;
-    }
+        filmCoupled     true;
 
-    ash;
+        gasHSource      true;
+        qrHSource       false;
+
+        radFluxName     qr;
+
+        moveMesh        false;
+        minimumDelta    1e-6;
+
+        useChemistrySolvers    true;
+    }
 }
 
 
