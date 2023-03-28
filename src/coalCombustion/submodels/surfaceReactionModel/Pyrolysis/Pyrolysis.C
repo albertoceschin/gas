@@ -44,20 +44,32 @@ Pyrolysis
     C1_(this->coeffDict().getScalar("C1")),
     C2_(this->coeffDict().getScalar("C2")),
     E_(this->coeffDict().getScalar("E")),
-    waterToAsh_(this->coeffDict().getScalar("waterToAsh")),
+    C3_(this->coeffDict().getScalar("C3")),
     CsLocalId_(-1),
+    C8H18LocalId_(-1),
+    C10H22LocalId_(-1),
     O2GlobalId_(owner.composition().carrierId("O2")),
+    H2GlobalId_(owner.composition().carrierId("H2")),
     CO2GlobalId_(owner.composition().carrierId("CO2")),
     WC_(0.0),
+    WC8H18_(0.0),
+    WC10H22_(0.0),
     WO2_(0.0),
+    WH2_(0.0),
     HcCO2_(0.0)
 {
     // Determine Cs ids
     label idSolid = owner.composition().idSolid();
     CsLocalId_ = owner.composition().localId(idSolid, "C");
 
+    // Determine Cs ids
+    label idLiquid = owner.composition().idLiquid();
+    C8H18LocalId_ = owner.composition().localId(idLiquid, "C8H18");
+    C10H22LocalId_ = owner.composition().localId(idLiquid, "C10H22");
+
     // Set local copies of thermo properties
     WO2_ = owner.thermo().carrier().W(O2GlobalId_);
+    WH2_ = owner.thermo().carrier().W(H2GlobalId_); 
     const scalar WCO2 = owner.thermo().carrier().W(CO2GlobalId_);
     WC_ = WCO2 - WO2_;
 
@@ -81,12 +93,16 @@ Pyrolysis
     C1_(srm.C1_),
     C2_(srm.C2_),
     E_(srm.E_),
-    waterToAsh_(srm.waterToAsh_),
+    C3_(srm.C3_),
     CsLocalId_(srm.CsLocalId_),
+    C8H18LocalId_(srm.C8H18LocalId_),
+    C10H22LocalId_(srm.C10H22LocalId_),
     O2GlobalId_(srm.O2GlobalId_),
+    H2GlobalId_(srm.H2GlobalId_),
     CO2GlobalId_(srm.CO2GlobalId_),
     WC_(srm.WC_),
     WO2_(srm.WO2_),
+    WH2_(srm.WH2_),
     HcCO2_(srm.HcCO2_)
 {}
 
@@ -121,6 +137,10 @@ Foam::scalar Foam::Pyrolysis<CloudType>::calculate
     const label idSolid = CloudType::parcelType::SLD;
     const scalar fComb = YMixture[idSolid]*YSolid[CsLocalId_];
 
+    // Fraction of remaining combustible material
+    const label idLiquid = CloudType::parcelType::LIQ;
+    const scalar fCombLiqud = YMixture[idLiquid]*YSolid[C10H22LocalId_];
+
     // Surface combustion active combustible fraction is consumed
     if (fComb < SMALL)
     {
@@ -131,6 +151,9 @@ Foam::scalar Foam::Pyrolysis<CloudType>::calculate
 
     // Local mass fraction of O2 in the carrier phase
     const scalar YO2 = thermo.carrier().Y(O2GlobalId_)[celli];
+
+    // Local mass fraction of H2 in the carrier phase
+    const scalar YH2 = thermo.carrier().Y(H2GlobalId_)[celli];
 
     // Diffusion rate coefficient
     const scalar D0 = C1_/d*pow(0.5*(T + Tc), 0.75);

@@ -79,17 +79,22 @@ class Pyrolysis
             //- Kinetics limited rate activation energy
             const scalar E_;
 
-            //- Test liquid to solid
-            const scalar waterToAsh_;
+            //- Test heter.
+            const scalar C3_;
 
 
         // Addressing
 
             //- Cs positions in global/local lists
             label CsLocalId_;
+            label C8H18LocalId_;
+            label C10H22LocalId_;
 
             //- O2 position in global list
             label O2GlobalId_;
+
+            //- H2 position in global list
+            label H2GlobalId_;
 
             //- CO2 positions in global list
             label CO2GlobalId_;
@@ -99,9 +104,14 @@ class Pyrolysis
 
             //- Molecular weight of C [kg/kmol]
             scalar WC_;
+            scalar WC8H18_;
+            scalar WC10H22_;
 
             //- Molecular weight of O2 [kg/kmol]
             scalar WO2_;
+
+            //- Molecular weight of H2 [kg/kmol]
+            scalar WH2_;
 
             //- Formation enthalpy for CO2 [J/kg]
             scalar HcCO2_;
