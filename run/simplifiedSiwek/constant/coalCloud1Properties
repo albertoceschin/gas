@@ -157,8 +157,8 @@ subModels
         (
             gas
             {
-                CH4             0.604;
-                H2              0.099;
+                CH4             0.703;//.604;
+                H2              0;//0.099;
                 CO2             0.297;
             }
             liquid
@@ -199,20 +199,20 @@ subModels
         residualCoeff   0.001;
     }
 
-    COxidationKineticDiffusionLimitedRateCoeffs
-    {
-        Sb              1;
-        C1              5.0E-12;
-        C2              0.002;
-        E               7.9E+07;
-    }
+    //COxidationKineticDiffusionLimitedRateCoeffs
+    //{
+    //    Sb              1;
+    //    C1              5.0E-12;
+    //    C2              0.002;
+    //    E               7.9E+07;
+    //}
     PyrolysisCoeffs // AC
     {
-        Sb              1;
+        Sb              1; // Stoichiometry
         C1              5.0E-12;
         C2              0.002;
+        C3              1e-10;
         E               7.9E+07;
-        waterToAsh      1;
     }
 }
 

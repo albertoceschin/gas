@@ -19,7 +19,7 @@ source1
     type            fixedTemperatureConstraint;
 
     timeStart       1;
-    duration        5;
+    duration        1;
     selectionMode   cellSet;
     cellSet         ignitionCells;
 

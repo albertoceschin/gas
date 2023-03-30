@@ -98,6 +98,8 @@ class Pyrolysis
 
             //- CO2 positions in global list
             label CO2GlobalId_;
+            label C8H18GlobalId_;
+            label C10H22GlobalId_;
 
 
         // Local copies of thermo properties
