@@ -125,36 +125,31 @@ Foam::scalar Foam::Pyrolysis<CloudType>::calculate
     const scalar fCombCs = YMixture[idSolid]*YSolid[CsLocalId_];
     const scalar fCombC10H22 = YMixture[idLiquid]*YLiquid[C10H22LocalId_];
 
-//    if (fCombCs > SMALL)
-//    {
-//        const SLGThermo& thermo = this->owner().thermo();
-//        const scalar YO2 = thermo.carrier().Y(O2GlobalId_)[celli];
-//        const scalar D0 = C1_/d*pow(0.5*(T + Tc), 0.75);
-//        const scalar Rk = C2_*exp(-E_/(RR*Tc));
-//        const scalar Ap = constant::mathematical::pi*sqr(d);
-//        scalar dmC = Ap*rhoc*RR*Tc*YO2/WO2_*D0*Rk/(D0 + Rk)*dt;
-//        //Info<<mass*fCombCs << "..."<< dmC<<endl;
-//        dmC = min(mass*fCombCs, dmC);
-//        const scalar dOmega = dmC/WC_;
-//        //Info<<dOmega<<"dOmega"<<endl;
-//        const scalar dmO2 = dOmega*Sb_*WO2_;
-//        const scalar dmCO2 = dOmega*(WC_ + Sb_*WO2_);
-//        dMassSolid[CsLocalId_] += dOmega*WC_;
-//        dMassSRCarrier[O2GlobalId_] -= dmO2;
-//        dMassSRCarrier[CO2GlobalId_] += dmCO2;
-//        const scalar HsC = thermo.solids().properties()[CsLocalId_].Hs(T);
-//        // Heat of reaction [J]
-//        dh += dmC*HsC - dmCO2*HcCO2_;
-//    }
+    if (fCombCs > SMALL)
+    {
+        const SLGThermo& thermo = this->owner().thermo();
+        const scalar YO2 = thermo.carrier().Y(O2GlobalId_)[celli];
+        const scalar D0 = C1_/d*pow(0.5*(T + Tc), 0.75);
+        const scalar Rk = C2_*exp(-E_/(RR*Tc));
+        const scalar Ap = constant::mathematical::pi*sqr(d);
+        scalar dmC = Ap*rhoc*RR*Tc*YO2/WO2_*D0*Rk/(D0 + Rk)*dt;
+        //Info<<mass*fCombCs << "..."<< dmC<<endl;
+        dmC = min(mass*fCombCs, dmC);
+        const scalar dOmega = dmC/WC_;
+        //Info<<dOmega<<"dOmega"<<endl;
+        const scalar dmO2 = dOmega*Sb_*WO2_;
+        const scalar dmCO2 = dOmega*(WC_ + Sb_*WO2_);
+        dMassSolid[CsLocalId_] += dOmega*WC_;
+        dMassSRCarrier[O2GlobalId_] -= dmO2;
+        dMassSRCarrier[CO2GlobalId_] += dmCO2;
+        const scalar HsC = thermo.solids().properties()[CsLocalId_].Hs(T);
+        // Heat of reaction [J]
+        dh += dmC*HsC - dmCO2*HcCO2_;
+    }
 
     if (fCombC10H22 > SMALL)
     {
-        //Info<<"TAG ####"<<endl;
-        //const SLGThermo& thermo = this->owner().thermo();
-        //const scalar YC10H22 = thermo.liquids().Y(C10H22LocalId_)[celli];
         scalar dmC10H22 =  C3_ *dt;
-        //Info <<dmC10H22<<"dMass"<<endl;
-        Info << mass*fCombC10H22<<" --- "<< dmC10H22<<endl;
         dmC10H22 = min(mass*fCombC10H22, dmC10H22);
         const scalar dOmega = dmC10H22/WC10H22_;
         const scalar dmH2 = dOmega*2.*WH2_;
@@ -162,7 +157,6 @@ Foam::scalar Foam::Pyrolysis<CloudType>::calculate
         dMassLiquid[C10H22LocalId_] += dOmega*WC10H22_;
         dMassLiquid[C8H18LocalId_] -= dOmega*WC8H18_;
         dMassSRCarrier[H2GlobalId_] += dmH2;
-        Info<<dOmega*WC8H18_<<endl;
     }
 
     return dh;

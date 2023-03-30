@@ -91,7 +91,7 @@ subModels
             duration        10;
             position        (0 0 -1e-3);
             direction       (0 0 -1);
-            parcelsPerSecond 2000;
+            parcelsPerSecond 100;
             flowRateProfile table
             (
                 (0              1)
@@ -164,8 +164,8 @@ subModels
             liquid
             {
                 H2O             0.9;
-                C10H22          0.1;
-                C8H18           0;
+                C10H22          0.09;
+                C8H18           0.01;
             }
             solid
             {
