@@ -132,7 +132,6 @@ subModels
 
     stochasticCollisionModel none;
 
-    //surfaceReactionModel COxidationKineticDiffusionLimitedRate;
     surfaceReactionModel Pyrolysis;
 
     surfaceFilmModel none;
@@ -157,15 +156,15 @@ subModels
         (
             gas
             {
-                CH4             0.703;//.604;
-                H2              0;//0.099;
+                CH4             0.604;
+                H2              0.099;
                 CO2             0.297;
             }
             liquid
             {
                 H2O             0.9;
-                C10H22          0.09;
-                C8H18           0.01;
+                C10H22          0.1;
+                C8H18           0;
             }
             solid
             {
@@ -199,13 +198,6 @@ subModels
         residualCoeff   0.001;
     }
 
-    //COxidationKineticDiffusionLimitedRateCoeffs
-    //{
-    //    Sb              1;
-    //    C1              5.0E-12;
-    //    C2              0.002;
-    //    E               7.9E+07;
-    //}
     PyrolysisCoeffs // AC
     {
         Sb              1; // Stoichiometry

@@ -8,7 +8,7 @@
 - [x] Adapt geometry in blockMeshDict to something meaningful. 
 - [x] Changed injection to cone injection.
 - [x] Test if reaction on, if conditions similar to the tutorial.
-- [ ] Test multiphase reaction.
+- [x] Test multiphase reaction.
 - [ ] Update species and flowrates (coal -> VRO). Idea was to use one liquid, one solid and multiple gas species to implement missing reactions. For now, realistic but no real.
 
 ## Notes

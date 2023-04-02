@@ -19,3 +19,20 @@ In the tutorial simplifiedSiwek, *limestoneParcels* is a *basicThermoCloud* defi
 On the opposite, *coalParcels* is a *coalCloud* with (ie) its singleMixtureFractionCoeffs for mass fractions and compositions of phases.
 
 It seems a patch is needed. Explore if also gas, not only liquid, need fix. And if the fix is right.
+
+At:
+ 
+src/lagrangian/intermediate/parcels/Templates/ReactingMultiphaseParcel/ReactingMultiphaseParcel.C
+
+```cpp
+         }
+         forAll(YLiquid_, i)
+         {
+-            scalar dm = np0*dMassLiquid[i];
++            //scalar dm = np0*dMassLiquid[i];
++            scalar dm = np0*dMassPC[i];
+             label gid = composition.localToCarrierId(LIQ, i);
+             scalar hs = composition.carrier().Hs(gid, pc, T0);
+             cloud.rhoTrans(gid)[this->cell()] += dm;
+
+```
