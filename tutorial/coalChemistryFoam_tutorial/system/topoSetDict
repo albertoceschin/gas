@@ -1,0 +1,90 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      topoSetDict;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+actions
+(
+    {
+        name ignitionCells;
+        type cellSet;
+        action new;
+
+        source sphereToCell;
+        sourceInfo
+        {
+            centre          (0 3.85 0);
+            radius          0.015;
+        }
+    }
+    
+    {
+        name    refineCells1;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        sourceInfo
+        {
+            box (-0.13 3.8 -1) (0.13 4.1 1); // Edit box bounds as required
+        }
+    }
+    
+    {
+        name    refineCells2;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        sourceInfo
+        {
+            box (-0.065 3.9 -1) (0.065 4.1 1); // Edit box bounds as required
+        }
+    }
+    
+    {
+        name    inletFaces;
+        type    faceSet;
+        action  new;
+        source  boxToFace;
+        sourceInfo
+        {
+            box (-0.01335 3.99999 -1)(0.01335 4.1 1);
+        }
+    }
+    
+    {
+        name    oxidizerFaces;
+        type    faceSet;
+        action  new;
+        source  boxToFace;
+        sourceInfo
+        {
+            box (0.049 3.99999 -1)(0.055 4.1 1);
+        }
+    }
+    
+    {
+        name    oxidizerFaces;
+        type    faceSet;
+        action  add;
+        source  boxToFace;
+        sourceInfo
+        {
+            box (-0.055 3.99999 -1)(-0.049 4.1 1);
+        }
+    }
+);
+
+
+// ************************************************************************* //

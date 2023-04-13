@@ -1,0 +1,156 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+convertToMeters 0.001;
+
+//coordinates
+y1 0;
+y2 260;
+y3 535;
+y4 4000;
+
+x1 125; //125;
+x2 250;
+
+z1 -11;
+z2 11;
+
+//Number of cells
+nx 60;
+
+ny1 20;
+ny2 20;
+ny3 400;
+
+
+//ratios
+/*multi grading works like this:
+rx 
+(
+	(0.5 0.8 1)    	// 50% x-dir, 80% cells, expansion = 1
+	(0.5 0.2 2) 	// 50% x-dir, 20% cells, expansion = 2
+);*/
+
+rx 
+(
+	(0.6 0.6 1)		// length percent, cell percent, expansion
+	(0.4 0.4 1)
+);
+
+ry1 1;
+ry2 1;
+ry3 0.3;
+
+vertices						
+(						
+	//back					
+	(0 $y1 $z1) // 0
+	(0 $y2 $z1) // 1
+	(0 $y3 $z1) // 2
+	(0 $y4 $z1) // 3
+	
+	($x1 $y1 $z1) // 4
+	($x1 $y2 $z1) // 5
+	($x2 $y3 $z1) // 6
+	($x2 $y4 $z1) // 7
+	
+	//back					
+	(0 $y1 $z2) // 8
+	(0 $y2 $z2) // 9
+	(0 $y3 $z2) // 10
+	(0 $y4 $z2) // 11
+	
+	($x1 $y1 $z2) // 12
+	($x1 $y2 $z2) // 13
+	($x2 $y3 $z2) // 14
+	($x2 $y4 $z2) // 15
+);						
+		
+				
+
+
+blocks																	
+(																	
+	hex (0 4 5 1 8 12 13 9) fluid (	$nx	$ny1	1	) simpleGrading (	$rx	$ry1	1)
+	hex (1 5 6 2 9 13 14 10) fluid (	$nx	$ny2	1	) simpleGrading (	$rx	$ry2	1)
+	hex (2 6 7 3 10 14 15 11) fluid (	$nx	$ny3	1	) simpleGrading (	$rx	$ry3	1)
+	
+);																	
+
+
+edges
+(
+);
+
+boundary
+(
+	outlet
+    {
+        type patch;
+        faces
+        (
+            (0 4 12 8)
+        );
+    }
+    
+    walls
+    {
+        type wall;
+        faces
+        (
+			// Top wall
+            (7 3 11 15)
+            // Right wall
+            (4 5 13 12)
+            (5 6 14 13)
+            (6 7 15 14)
+        );
+    }
+    
+    symmetry
+    {
+		type symmetryPlane;
+        faces
+        (
+			(3 2 10 11)
+            (2 1 9 10)
+            (1 0 8 9)
+        );
+	}
+    
+    frontAndBack							
+	{							
+		type	empty;					
+		faces						
+		(						
+			//Front					
+			(8 12 13 9)
+			(9 13 14 10)
+			(10 14 15 11)
+			//Back					
+			(0 1 5 4)
+			(1 2 6 5)
+			(2 3 7 6)
+		);						
+	}							
+
+);
+
+mergePatchPairs
+(
+);
+
+// ************************************************************************* //
