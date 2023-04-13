@@ -1,0 +1,36 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      combustionProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+combustionModel  EDC;
+
+active  true;
+
+EDCCoeffs
+{
+    //version v2005;
+    Cgamma		2.1377;
+    Ctau		0.4083;
+    exp1		2.0;
+    exp2		2.0;
+}
+
+PaSRCoeffs
+{
+    Cmix                1.0;
+}
+
+// ************************************************************************* //

@@ -1,0 +1,301 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      coalCloud1Properties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+solution
+{
+    active          true;
+    transient       yes;
+    coupled         true;
+    cellValueSourceCorrection on;
+    maxCo           0.3;
+
+    sourceTerms
+    {
+        schemes
+        {
+            rho             semiImplicit 1;
+            U               semiImplicit 1;
+            Yi              semiImplicit 1;
+            h               semiImplicit 1;
+            radiation       semiImplicit 1;
+        }
+    }
+
+    interpolationSchemes
+    {
+        rho             cell;
+        U               cellPoint;
+        thermo:mu       cell;
+        T               cell;
+        Cp              cell;
+        kappa           cell;
+        p               cell;
+        G               cell;
+    }
+
+    integrationSchemes
+    {
+        U               Euler;
+        T               analytical;
+    }
+}
+
+constantProperties
+{
+    rho0            635;
+    T0              300;
+    Cp0             2100; //4187;
+    epsilon0        1;		// ???
+    f0              0.5;		// ???
+
+    TDevol          400;
+    LDevol          0;		// ???
+    hRetentionCoeff 1;
+
+    constantVolume  false; // -> false ??
+}
+
+subModels
+{
+    particleForces
+    {
+        sphereDrag;
+        gravity;
+    }
+
+    injectionModels
+    {
+        model1
+        {
+            type            patchInjection; //manualInjection;
+            //patchName		inlet; //OF6
+            patch		inlet;  //OF1906
+            
+            parcelBasisType mass; // mass;	// fixed;
+            
+            massTotal       0.027986111; //   =0.05597222222222/2 = 10*0.005597222222222/2 [kg]
+            //massTotal       0;
+            parcelsPerSecond 200000; //40508.249;
+            
+            SOI             0;
+            duration		10;
+            //positionsFile   "coalCloud1Positions";
+            U0              (0 -1 0);
+            flowRateProfile constant 1;
+            sizeDistribution
+            {
+                type        RosinRammler;
+                RosinRammlerDistribution
+                {
+                    minValue        40e-06;		
+                    maxValue        1000e-06;
+                    d               122.73e-06;
+                    n               2.53;
+                }
+            }
+        }
+    }
+
+    dispersionModel none; //stochasticDispersionRAS; 
+
+    patchInteractionModel localInteraction; //standardWallInteraction;
+
+    heatTransferModel RanzMarshall;
+
+    compositionModel singleMixtureFraction;
+
+    phaseChangeModel liquidEvaporation;
+
+    devolatilisationModel singleKineticRateDevolatilisation; // -> singleKinetic / constant
+
+    stochasticCollisionModel none;
+
+    surfaceReactionModel CGasificationKineticDiffusionLimitedRate;
+
+    surfaceFilmModel none;
+
+    radiation       on;
+
+    /*standardWallInteractionCoeffs
+    {
+        type            rebound;
+        e               1;
+        mu              0;
+    }*/
+    
+	localInteractionCoeffs    
+	{
+		patches//YM change
+		(
+			inlet
+			{
+				type rebound;
+				e    0.97;
+				mu   0.09;
+			}
+			
+			oxidizer
+			{
+				type rebound;
+				e    0.97;
+				mu   0.09;
+			}
+			
+			walls
+			{
+				type rebound;
+				e    1;
+				mu   0;
+			}
+			
+			symmetry
+			{
+				type rebound;
+				e    1;
+				mu   0;
+			}
+
+			frontAndBack
+			{
+				type none;
+			}
+
+			outlet
+			{
+				type escape;
+			}
+		);
+	}
+
+    RanzMarshallCoeffs
+    {
+        BirdCorrection  true;
+    }
+
+    singleMixtureFractionCoeffs 
+    {
+        phases
+        (
+            gas
+            {
+                CH4		0.1373				;
+				H2		0.0142				;
+				CO2		0.3442				;
+				CO		0.1942				;
+				H2O		0.1718				;
+				C2H2	0.1383				;
+            }
+            liquid
+            {
+                H2O             1;
+            }
+            solid
+            {
+                ash             0.02545;	// total 0.0042
+                C               0.97455;	// total 0.1608
+            }
+        );
+        YGasTot0        0.78;
+        YLiquidTot0     0.055;
+        YSolidTot0      0.165;
+    }
+
+    liquidEvaporationCoeffs
+    {
+        enthalpyTransfer enthalpyDifference;
+
+        activeLiquids
+        (
+            H2O
+        );
+    }
+    
+    /*constantRateDevolatilisationCoeffs
+    {
+        volatileData
+        (
+            (CH4            12)
+            (H2             12)
+            (CO2            12)
+            (CO             12)
+            (H2O            12)
+            (C2H2           12)
+        );
+        residualCoeff   0.001;
+    }*/
+    
+    singleKineticRateDevolatilisationCoeffs
+    {
+        volatileData
+        (
+		// Thurner and Mann, A*=635
+            (CH4            3.28e9		8.4e7)
+            (H2             3.28e9		8.4e7)
+            (CO2            3.28e9		8.4e7)
+            (CO             3.28e9		8.4e7)
+            (H2O            3.28e9		8.4e7)
+            (C2H2           3.28e9		8.4e7)
+            
+            /*(CH4            1.1e11		177)
+            (H2             1.1e11		177)
+            (CO2            1.1e11		177)
+            (CO             1.1e11		177)
+            (H2O            1.1e11		177)
+            (C2H2           1.1e11		177)*/
+        );
+        residualCoeff   0.001;
+    }
+
+    /*COxidationKineticDiffusionLimitedRateCoeffs
+    {
+        Sb              1;
+        C1              5.0E-12;
+        C2              0.002;
+        E               7.9E+07;
+    }*/
+    
+    CGasificationKineticDiffusionLimitedRateCoeffs
+    {
+        Sb              1;
+        C1              2.53e-7; //5.0E-12;
+	// O2 oxidation
+	// Kashiwagi and Nambu
+        A1              7.06e5; //1.73e8;
+        E1              1.6e8;
+	n1		0.78;
+	beta1		0;
+	// CO2 gasification
+	// Van den Aarsen et al.
+        A2              0; //9.1e6;
+        E2              1.66e8;
+	n2		0.8;
+	beta2		-0.8;
+	// H2O gasification
+	// Kojima et al.
+        A3              0; //1.773e3;
+        E3              1.79e8;
+	n3		0.41;
+	beta3		0;
+    }
+}
+
+
+cloudFunctions
+{}
+
+
+// ************************************************************************* //
