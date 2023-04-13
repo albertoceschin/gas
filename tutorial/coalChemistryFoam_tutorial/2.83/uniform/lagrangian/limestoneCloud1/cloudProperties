@@ -1,0 +1,181 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1906                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "2.83/uniform/lagrangian/limestoneCloud1";
+    object      cloudProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+geometry        coordinates;
+
+processor0
+{
+    particleCount   0;
+}
+
+processor1
+{
+    particleCount   0;
+}
+
+processor2
+{
+    particleCount   0;
+}
+
+processor3
+{
+    particleCount   0;
+}
+
+processor4
+{
+    particleCount   0;
+}
+
+processor5
+{
+    particleCount   565933;
+}
+
+processor6
+{
+    particleCount   0;
+}
+
+processor7
+{
+    particleCount   0;
+}
+
+processor8
+{
+    particleCount   0;
+}
+
+processor9
+{
+    particleCount   0;
+}
+
+processor10
+{
+    particleCount   0;
+}
+
+processor11
+{
+    particleCount   0;
+}
+
+processor12
+{
+    particleCount   0;
+}
+
+processor13
+{
+    particleCount   0;
+}
+
+processor14
+{
+    particleCount   0;
+}
+
+processor15
+{
+    particleCount   0;
+}
+
+processor16
+{
+    particleCount   0;
+}
+
+processor17
+{
+    particleCount   0;
+}
+
+processor18
+{
+    particleCount   0;
+}
+
+processor19
+{
+    particleCount   0;
+}
+
+processor20
+{
+    particleCount   0;
+}
+
+processor21
+{
+    particleCount   0;
+}
+
+processor22
+{
+    particleCount   0;
+}
+
+processor23
+{
+    particleCount   0;
+}
+
+processor24
+{
+    particleCount   0;
+}
+
+processor25
+{
+    particleCount   0;
+}
+
+processor26
+{
+    particleCount   0;
+}
+
+processor27
+{
+    particleCount   0;
+}
+
+processor28
+{
+    particleCount   0;
+}
+
+processor29
+{
+    particleCount   0;
+}
+
+processor30
+{
+    particleCount   0;
+}
+
+processor31
+{
+    particleCount   0;
+}
+
+
+// ************************************************************************* //

@@ -1,0 +1,59 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1906                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "2.83/uniform/lagrangian/coalCloud1";
+    object      coalCloud1OutputProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+injectionModel
+{
+    model1
+    {
+        volumeTotal     10;
+        massInjected    0.00792007;
+        nInjections     29583;
+        parcelsAddedTotal 565916;
+        timeStep0       2.83;
+    }
+}
+
+patchInteractionModel
+{
+    escapedParcels  512278;
+    escapedMass     5.45703e-05;
+    localInteraction
+    {
+        nEscape         6 ( 1 ( 0 ) 1 ( 0 ) 1 ( 0 ) 1 ( 0 ) 1 ( 0 ) 1 ( 512278 ) );
+        massEscape      6 ( 1 ( 0 ) 1 ( 0 ) 1 ( 0 ) 1 ( 0 ) 1 ( 0 ) 1 ( 5.45696e-05 ) );
+        nStick          6 ( 1 ( 0 ) 1 ( 0 ) 1 ( 0 ) 1 ( 0 ) 1 ( 0 ) 1 ( 0 ) );
+        massStick       6 ( 1 ( 0 ) 1 ( 0 ) 1 ( 0 ) 1 ( 0 ) 1 ( 0 ) 1 ( 0 ) );
+    }
+}
+
+phaseChangeModel
+{
+    mass            0.000433725;
+}
+
+devolatilisationModel
+{
+    mass            0.00602672;
+}
+
+surfaceReactionModel
+{
+    mass            0.00120274;
+}
+
+
+// ************************************************************************* //
