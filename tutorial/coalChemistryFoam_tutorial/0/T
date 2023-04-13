@@ -1,0 +1,66 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    location    "0";
+    object      T;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 0 0 1 0 0 0];
+
+internalField   uniform 1000;
+
+boundaryField
+{
+    outlet
+    {
+		type            inletOutlet;
+        value           uniform 300;
+        inletValue      uniform 300;
+    }
+    walls
+    {
+		/*type            fixedValue;
+        value           uniform 300;*/
+        
+        type            codedFixedValue;
+        value			uniform 800.0;
+        name            myWallTemp;
+        code            #{
+                vector dir = vector(0, 1, 0);
+                scalarField var = patch().Cf()&dir;
+                scalarField value = -78.805*var*var + 283.970*var + 1250;
+                operator==(value);
+        #};
+    }
+    inlet
+    {
+		type            fixedValue;
+        value           uniform 300;
+    }
+    oxidizer
+    {
+		type            fixedValue;
+        value           uniform 300;
+    }
+    frontAndBack
+    {
+		type			empty;
+    }
+    symmetry
+    {
+		type			symmetryPlane;
+	}
+}
+
+
+// ************************************************************************* //
