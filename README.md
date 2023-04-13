@@ -11,13 +11,14 @@
 
 * Kaust development regarding gasification project.
 * .bash_gas: aliases for paths. Add your own machines once sourcing of2212.
+* patch for OpenFOAM to apply directly in installation folder.
 
 ## Folders
 * */run/simplifiedSiwek* from OF tutorial. Goal is to adapt tutorial to new mesh closer to Kaust gasifier.
 
 ## Notes
 
-* Using OF2212
+* Using OF2212.
 
 ## Conventions
 
