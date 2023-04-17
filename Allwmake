@@ -7,4 +7,6 @@ cd "${0%/*}" || exit                                # Run from this directory
 cd src; ./Allwmake; cd -;
 cd solver; ./Allwmake; cd -;
 
+echo Did you apply patch.liquid?
+
 #------------------------------------------------------------------------------

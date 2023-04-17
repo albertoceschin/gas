@@ -1,7 +1,8 @@
 ## TO DO
 
-- [x] Adapt *simplifiedSiwek* tutorial to gasifier mesh. 
+- [x] Adapt *simplifiedSiwek* tutorial to gasifier mesh.
 - [ ] Have realistic flowrates and conditions.
+- [ ] Implement detailed kinetics (ie adapting Junjun case).
 - [x] Remove file duplication, using existing file in $FOAM/{src,applications/solver}
 - [ ] Switch from coal feed to something more close to VRO. 
 - [ ] List features we need to implement so we can plan better.
