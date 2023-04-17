@@ -28,25 +28,15 @@ divSchemes
 {
     default         none;
 
-//    div(phi,U)      Gauss upwind;
-//    div(phid,p)     Gauss upwind;
-//    div(phi,K)      Gauss linear;
-//    div(phi,h)      Gauss upwind;
-//    div(phi,k)      Gauss upwind;
-//    div(phi,epsilon) Gauss upwind;
-//    div(U)          Gauss linear;
-//    div(phi,Yi_h)   Gauss upwind;
-
-    div(phi,U)      Gauss limitedLinearV 1;
-    div(phid,p)     Gauss limitedLinear 1;
-    div(phi,K)      Gauss limitedLinear 1;
-    div(phi,h)      Gauss limitedLinear 1;
-    div(phi,k)      Gauss limitedLinear 1;
-    div(phi,epsilon) Gauss limitedLinear 1;
-    div(U)          Gauss limitedLinear 1;
-    div(phi,Yi_h)   Gauss limitedLinear01 1;
-
+    div(phi,U)      Gauss upwind;
+    div(phid,p)     Gauss upwind;
+    div(phi,K)      Gauss linear;
+    div(phi,h)      Gauss upwind;
+    div(phi,k)      Gauss upwind;
+    div(phi,epsilon) Gauss upwind;
+    div(U)          Gauss linear;
     div(((rho*nuEff)*dev2(T(grad(U))))) Gauss linear;
+    div(phi,Yi_h)   Gauss upwind;
 }
 
 laplacianSchemes

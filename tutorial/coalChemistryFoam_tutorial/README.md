@@ -1,0 +1,3 @@
+### NOTE
+
+This case is for coalChemistryFoam in OpenFOAM-7. So there may be some differents in other openfoam version.
