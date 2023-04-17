@@ -18,7 +18,7 @@ runApplication topoSet # AC maybe deactivate for now
 
 runApplication decomposePar
 
-runParallel $(getApplication)
+./Allsolver
 
 # runApplication reconstructPar #-latestTime
 

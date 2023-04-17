@@ -20,11 +20,11 @@ active  true;
 
 EDCCoeffs
 {
-    //version v2005;
-    Cgamma      2.1377;
-    Ctau        0.4083;
-    exp1        2.0;
-    exp2        2.0;
+    version v2005;
+    //Cgamma      2.1377;
+    //Ctau        0.4083;
+    //exp1        2.0;
+    //exp2        2.0;
 }
 
 

@@ -1,0 +1,53 @@
+set terminal qt size 1280,720
+set multiplot layout 2,2
+#set size 0.4,0.4
+#set origin 0,0
+set grid
+
+set format y "%e"
+set logscale y
+#set title "< tail -n 100 log.*Foam | grep '^Time =' | cut -d' ' -f3 | tail -n 1"
+set title "Time"
+set ylabel 'Value'
+set xlabel 'Iteration'
+plot \
+    "< tail -n 1000 log.*Foam | grep '^Courant Number mean' | cut -d' ' -f6 | tr -d ','" title 'Courant max' with lp,\
+    "< tail -n 1000 log.*Foam | grep '^Courant Number mean' | cut -d' ' -f4 | tr -d ','" title 'Courant mean' with lp,\
+    "< tail -n 1000 log.*Foam | grep '^Time =' | cut -d' ' -f3 | tr -d ','" title 'Time' with lp,\
+    "< tail -n 1000 log.*Foam | grep '^deltaT' | cut -d' ' -f3 | tr -d ','" title 'deltaT' with lp
+unset logscale y
+unset yrange
+
+#set size 0.4,0.4
+#set origin 0.5,0
+#set logscale y
+set title "Max and min"
+set ylabel 'Value'
+set xlabel 'Iteration'
+plot \
+    "< tail -n 10000 log.*Foam | grep 'T gas min/max' | cut -d' ' -f7 | tr -d ','" title 'TgasMin' with lp,\
+    "< tail -n 10000 log.*Foam | grep 'T gas min/max' | cut -d' ' -f8 | tr -d ','" title 'TgasMax' with lp
+#unset yrange
+#unset logscale
+
+set logscale y
+set title "Residuals"
+set ylabel 'Value'
+set xlabel 'Iteration'
+plot\
+    "< tail -n 5000 log.*Foam | grep 'for Ux' | cut -d' ' -f9 | tr -d ','" title 'Ux' with lp,\
+    "< tail -n 5000 log.*Foam | grep 'for Uy' | cut -d' ' -f9 | tr -d ','" title 'Uy' with lp,\
+    "< tail -n 5000 log.*Foam | grep 'for Uz' | cut -d' ' -f9 | tr -d ','" title 'Uz' with lp,\
+    "< tail -n 1000 log.*Foam | grep 'for p' | cut -d' ' -f9 | tr -d ','" title 'p rgh' with lp
+    #"< tail -n 1000 log.*Foam | grep 'for pcorr' | cut -d' ' -f8 | tr -d ','" title 'pcorr' with lp
+unset logscale y
+
+set title "Cells number"
+set ylabel 'Value'
+set xlabel 'Iteration'
+plot\
+    "< tail -n 1000 log.*Foam | grep 'Current mass in system' | cut -d' ' -f19 | tr -d ','" title 'Mass in system' with lp
+
+pause 30
+unset terminal
+reread
