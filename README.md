@@ -20,6 +20,7 @@
 ## Notes
 
 * Using OF2212.
+* Erica is developing PASR nodel from [Cuoci](https://github.com/acuoci/edcSMOKE/tree/master/solver/edcModel).
 
 ## Conventions
 
